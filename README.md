@@ -1,2 +1,2 @@
 # origins-5
-datapack for origins 5 :3
+datapack for origins 5
