@@ -9,8 +9,8 @@ title @s[scores={flux = 30}] actionbar [{"text":"Creator/musicbox - ","color":"#
 #joined flux stuff
 execute unless score @s disc_inserted matches -2147483648..2147483647 run scoreboard players set @s disc_inserted 0
 execute unless score @s flux matches -2147483648..2147483647 run scoreboard players set @s flux 0
-
-
+execute unless score @s sec_timer matches -30.. run scoreboard players set @s sec_timer 0
+execute unless score @s ambient_timer matches -30.. run scoreboard players set @s ambient_timer 0
 
 
 #timer stuff
@@ -82,6 +82,26 @@ execute as @a[team=flux] if score @s flux matches 41 run attribute @s armor_toug
 
 
 
-#apply passive buffs
+#apply passive buffs and music
+execute unless entity @s[scores={flux=0}] run scoreboard players remove @s[scores={ambient_timer= 0..,disc_inserted=0}] ambient_timer 1
+
+#apply mb-creator flux state
+execute unless entity @s[scores={flux=30}] run execute if data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components{"minecraft:item_model":"minecraft:music_disc_creator_music_box"} run scoreboard players set @s ambient_timer 0
 execute if data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components{"minecraft:item_model":"minecraft:music_disc_creator_music_box"} run scoreboard players set @s flux 30
+#apply mb-creator music
+
+execute if entity @s[scores={disc_inserted=0,ambient_timer=0,flux=30}] run stopsound @s record
+execute if entity @s[scores={disc_inserted=0,ambient_timer=0,flux=30}] run playsound alt_music_disc:musicboxstereo record @s ~ ~ ~ .7 1 1
+scoreboard players set @s[scores={ambient_timer = ..0,flux=30}] ambient_timer 1420
+
+
+
+
+
+
+
 execute unless data entity @s Inventory[{Slot:17b}].components."minecraft:item_model" run scoreboard players set @s flux 0
+execute unless data entity @s Inventory[{Slot:17b}].components."minecraft:item_model" run scoreboard players set @s ambient_timer 0
+execute unless data entity @s Inventory[{Slot:17b}].components."minecraft:item_model" run stopsound @s record
+
+
