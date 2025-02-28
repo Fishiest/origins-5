@@ -55,12 +55,13 @@ execute as @a[scores={justJoined=1}] run scoreboard players set @s ego 5
 execute as @a[scores={justJoined=1}] run scoreboard players set @s egotimer 0
 execute as @a[scores={justJoined=1}] run scoreboard players set @s damage 0
 
-#death deteciton
+#death detection
 execute as @a[team=armadillo] if score @s death matches 1.. run scoreboard players set @s ego 0
 execute as @a if score @s death matches 1.. run scoreboard players set @s death 0
+
 #ego timer
-execute as @a[team=armadillo,scores={damage=0}] run scoreboard players add @s egotimer 1
-execute as @a[team=armadillo] if score @s egotimer matches 400.. run scoreboard players add @s ego 1
+execute as @a[team=armadillo,scores={damage=0,ego=..9}] run scoreboard players add @s egotimer 1
+execute as @a[team=armadillo] if score @s[scores={ego=..9}] egotimer matches 400.. run scoreboard players add @s ego 1
 execute as @a[team=armadillo] run scoreboard players operation @s egotimer %= !400 numbers
 
 #ego actionbar
@@ -85,7 +86,8 @@ execute as @a[team=armadillo] if score @s egotimer matches 320..339 run title @s
 execute as @a[team=armadillo] if score @s egotimer matches 340..359 run title @s actionbar ["",{"text":"Ego: [","color":"#ff3366"},{"color":"#c51c1c","bold":true,"score":{"objective":"ego","name":"@s"}},{"text":"] ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ □ □","color":"#ff3366"}]
 execute as @a[team=armadillo] if score @s egotimer matches 360..379 run title @s actionbar ["",{"text":"Ego: [","color":"#ff3366"},{"color":"#c51c1c","bold":true,"score":{"objective":"ego","name":"@s"}},{"text":"] ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ □","color":"#ff3366"}]
 execute as @a[team=armadillo] if score @s egotimer matches 380..399 run title @s actionbar ["",{"text":"Ego: [","color":"#ff3366"},{"color":"#c51c1c","bold":true,"score":{"objective":"ego","name":"@s"}},{"text":"] ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■","color":"#ff3366"}]
-
+#at full ego keeps ego bar full
+execute as @a[team=armadillo] if score @s ego matches 10 run title @s actionbar ["",{"text":"Ego: [","color":"#ff3366"},{"color":"#c51c1c","bold":true,"score":{"objective":"ego","name":"@s"}},{"text":"] ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■","color":"#ff3366"}]
 #ego movement speed
 execute as @a[team=armadillo] if score @s ego matches 0 run attribute @s movement_speed base set 0.05
 execute as @a[team=armadillo] if score @s ego matches 1 run attribute @s movement_speed base set 0.078
