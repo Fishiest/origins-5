@@ -1,0 +1,5 @@
+
+#izzy using functions?!
+
+tellraw @s ["",{"text":"a","obfuscated":true},{"text":"[Dragon Egg Menu]","bold":true,"color":"dark_purple"},{"text":"a","obfuscated":true},"\n\n",{"text":"[Strength]","clickEvent":{"action":"run_command","value":"/trigger degg set 1"},"color":"#ffc700"},"\n",{"text":"[Speed]","clickEvent":{"action":"run_command","value":"/trigger degg set 2"},"color":"#33ebff"},"\n",{"text":"[Fire Res]","clickEvent":{"action":"run_command","value":"/trigger degg set 3"},"color":"#ff9900"},"\n",{"text":"[Haste]","clickEvent":{"action":"run_command","value":"/trigger degg set 4"},"color":"#d9c043"},"\n",{"text":"[Jump Boost]","clickEvent":{"action":"run_command","value":"/trigger degg set 5"},"color":"#fdff84"},"\n",{"text":"[Clear Effects]","clickEvent":{"action":"run_command","value":"/trigger degg set 0"}}]
+scoreboard players set @s DragonEgg 0

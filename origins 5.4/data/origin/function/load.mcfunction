@@ -40,11 +40,6 @@ scoreboard objectives add sec dummy
 scoreboard objectives add sec_timer dummy
 scoreboard objectives add disc_inserted dummy
 
-
-
-
-
-
 scoreboard objectives add originSelect trigger
 scoreboard objectives add justJoined minecraft.custom:minecraft.play_time
 scoreboard objectives add damage minecraft.custom:minecraft.damage_taken
@@ -55,6 +50,9 @@ scoreboard objectives add adminFag trigger
 
 scoreboard objectives add death deathCount
 scoreboard players set #dimensionaccess dimension_access 0
+
+scoreboard objectives add degg trigger
+scoreboard objectives add DragonEgg trigger
 
 #execute as @r at @s run function origin:test with entity @s SelectedItem
 say gay_sex

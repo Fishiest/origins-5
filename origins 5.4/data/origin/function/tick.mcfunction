@@ -159,6 +159,21 @@ execute as @a[scores={adminFag=1..}] run attribute @s max_health base reset
 execute as @a[scores={adminFag=1..}] run attribute @s movement_speed base reset
 execute as @a[scores={adminFag=1..}] run effect clear @s
 execute as @a[scores={adminFag=1..}] run scoreboard players set @s adminFag 0
+
+
+#dragon egg stuff
+scoreboard players enable @a degg
+execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] run scoreboard players enable @s DragonEgg
+execute as @a[nbt=!{Inventory:[{id:"minecraft:dragon_egg"}]}] run scoreboard players set @s DragonEgg 0
+execute as @a[scores={DragonEgg=1..}] run function origin:dragonegg
+execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 1 run effect give @s strength 1 1 true
+execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 2 run effect give @s speed 1 1 true
+execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 3 run effect give @s fire_resistance 1 0 true
+execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 4 run effect give @s haste 1 1 true
+execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 5 run effect give @s jump_boost 1 1 true
+
+
+
 #say alkjsdf
 
 
