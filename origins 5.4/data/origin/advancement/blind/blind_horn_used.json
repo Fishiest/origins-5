@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "toot_horn_blind": {
+      "conditions": {
+        "item": {
+          "items": "goat_horn"
+        },"player":{"team": "blind"}
+        
+      },
+      "trigger": "minecraft:using_item"
+    }
+  },
+  "requirements": [
+    [
+      "toot_horn_blind"
+    ]
+  ],
+  "rewards":{"function": "origin:blind/blind_horn"}
+  
+}

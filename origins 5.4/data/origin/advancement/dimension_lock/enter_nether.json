@@ -1,0 +1,17 @@
+{
+    "criteria": {
+      "entered_nether": {
+        "conditions": {
+          "to": "minecraft:the_nether"
+        },
+        "trigger": "minecraft:changed_dimension"
+      }
+    },
+    
+    "requirements": [
+      [
+        "entered_nether"
+      ]
+    ],
+    "rewards":{"function": "origin:dimension_lock/enter_nether"}
+  }
