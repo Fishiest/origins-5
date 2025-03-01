@@ -56,4 +56,4 @@ scoreboard objectives add degg trigger
 scoreboard objectives add DragonEgg trigger
 
 #execute as @r at @s run function origin:test with entity @s SelectedItem
-say gay_sex
+say gay_sex:3
