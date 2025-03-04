@@ -174,7 +174,15 @@ execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg ma
 execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 4 run effect give @s haste 1 1 true
 execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 5 run effect give @s jump_boost 1 1 true
 
-
+#pvp list
+tellraw @a[scores={pvplist=1..}] ["",{"text":"[PvP List]:","color":"gold"},"\n",{"selector":"@a[scores={pvp=1..}]"}]
+scoreboard players enable @a pvplist
+scoreboard players set @a[scores={pvplist=1..}] pvplist 0
+scoreboard players set @a[scores={justJoined=1}] pvp 1
+scoreboard players enable @a pvp
+scoreboard players operation @r pvp %= !two numbers
+scoreboard players set @a[nbt={Inventory:[{id:"minecraft:mace"}]}] pvp 1
+scoreboard players set @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] pvp 1
 
 #say alkjsdf
 

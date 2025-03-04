@@ -55,5 +55,8 @@ scoreboard players set #dimensionaccess dimension_access 0
 scoreboard objectives add degg trigger
 scoreboard objectives add DragonEgg trigger
 
+scoreboard objectives add pvp trigger
+scoreboard objectives add pvplist trigger
+
 #execute as @r at @s run function origin:test with entity @s SelectedItem
 say gay_sex:3
