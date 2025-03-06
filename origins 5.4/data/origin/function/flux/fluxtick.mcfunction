@@ -102,6 +102,7 @@ scoreboard players set @s[scores={ambient_timer = ..0,flux=30}] ambient_timer 14
 #end ambient effects
 execute unless data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run scoreboard players set @s flux 0
 execute unless data entity @s Inventory[{Slot:17b}].components."minecraft:item_model" run scoreboard players set @s ambient_timer 0
-execute unless data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run stopsound @s record
+#end ambient music
+execute unless data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run stopsound @s record alt_music_disc:musicboxstereo
 
 
