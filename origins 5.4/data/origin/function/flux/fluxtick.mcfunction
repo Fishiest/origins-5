@@ -90,9 +90,9 @@ execute unless entity @s[scores={flux=30}] run execute if data entity @s[scores=
 execute if data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components{"minecraft:item_model":"minecraft:music_disc_creator_music_box"} run scoreboard players set @s flux 30
 
 #apply mb-creator music
-execute if entity @s[scores={disc_inserted=0,ambient_timer=0,flux=30}] run stopsound @s record
-execute if entity @s[scores={disc_inserted=0,ambient_timer=0,flux=30}] run playsound alt_music_disc:musicboxstereo record @s ~ ~ ~ .7 1 1
-scoreboard players set @s[scores={ambient_timer = ..0,flux=30}] ambient_timer 1420
+execute if entity @s[scores={disc_inserted=0,ambient_timer=0,flux=30}] run function origin:flux/end_ambient_music
+execute if entity @s[scores={disc_inserted=0,ambient_timer=0,flux=30}] run playsound alt_music_disc:musicboxstereo music @s ~ ~ ~ .7 1 1
+scoreboard players set @s[scores={ambient_timer = ..0,flux=30}] ambient_timer 1440
 
 
 
@@ -103,6 +103,7 @@ scoreboard players set @s[scores={ambient_timer = ..0,flux=30}] ambient_timer 14
 execute unless data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run scoreboard players set @s flux 0
 execute unless data entity @s Inventory[{Slot:17b}].components."minecraft:item_model" run scoreboard players set @s ambient_timer 0
 #end ambient music
-execute unless data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run stopsound @s record alt_music_disc:musicboxstereo
-
+execute unless data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run function origin:flux/end_ambient_music
+execute if data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run function origin:flux/end_vanilla_music
+execute if entity @s[scores={disc_inserted=1}] run function origin:flux/end_vanilla_music
 

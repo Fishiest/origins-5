@@ -1,0 +1,1 @@
+stopsound @s music alt_music_disc:musicboxstereo
