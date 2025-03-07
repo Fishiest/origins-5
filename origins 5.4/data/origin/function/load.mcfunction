@@ -58,5 +58,7 @@ scoreboard objectives add DragonEgg trigger
 scoreboard objectives add pvp trigger
 scoreboard objectives add pvplist trigger
 
+scoreboard objectives add vanillaMusicDisable trigger
+
 #execute as @r at @s run function origin:test with entity @s SelectedItem
 say gay_sex:3

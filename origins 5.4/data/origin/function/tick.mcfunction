@@ -184,6 +184,9 @@ scoreboard players operation @r pvp %= !two numbers
 scoreboard players set @a[nbt={Inventory:[{id:"minecraft:mace"}]}] pvp 1
 scoreboard players set @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] pvp 1
 
+scoreboard players enable @a vanillaMusicDisable
+execute as @a[scores={vanillaMusicDisable=1}] run function origin:flux/end_vanilla_music
+
 #say alkjsdf
 
 
