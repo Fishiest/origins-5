@@ -1,0 +1,14 @@
+{
+    "criteria": {
+      "entered_nether": {
+        "trigger": "minecraft:changed_dimension"
+      }
+    },
+    
+    "requirements": [
+      [
+        "entered_nether"
+      ]
+    ],
+    "rewards":{"function": "origin:flux/music_discs/end_disc_effects"}
+  }

@@ -23,6 +23,7 @@ execute unless score @s sec_timer matches -30.. run scoreboard players set @s se
 #apply music starved
 execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origin:flux/music_discs/music_starved
 
+
 #unapply music starved and set stats to default
 execute as @a[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s max_absorption base set -12
 execute as @a[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s max_health base set 14

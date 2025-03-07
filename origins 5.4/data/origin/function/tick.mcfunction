@@ -57,6 +57,7 @@ execute as @a[scores={justJoined=1}] run scoreboard players set @s damage 0
 
 #death detection
 execute as @a[team=armadillo] if score @s death matches 1.. run scoreboard players set @s ego 0
+execute as @a[team=flux,scores={death=1,disc_inserted=1}] run function origin:flux/music_discs/end_disc_effects
 execute as @a if score @s death matches 1.. run scoreboard players set @s death 0
 
 #ego timer
@@ -186,7 +187,7 @@ scoreboard players set @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] pvp 1
 
 scoreboard players enable @a vanillaMusicDisable
 execute as @a[scores={vanillaMusicDisable=1}] run function origin:flux/end_vanilla_music
-
+scoreboard players set @a[scores={vanillaMusicDisable=2..}] vanillaMusicDisable 0
 #say alkjsdf
 
 
