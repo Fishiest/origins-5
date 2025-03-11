@@ -13,6 +13,7 @@ execute as @s run attribute @s attack_damage base set .8
 execute as @s run attribute @s mining_efficiency base set -.2
 execute as @s run attribute @s movement_speed base set .09
 execute as @s run attribute @s attack_speed base set 3.5
+execute as @s run attribute @s scale base set 1
 execute as @s run attribute @s armor base set -4
 execute as @s run attribute @s armor_toughness base set -1
 

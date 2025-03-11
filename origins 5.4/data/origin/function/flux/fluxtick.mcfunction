@@ -45,6 +45,7 @@ execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origi
     execute as @s[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s block_interaction_range base set 4.5
     execute as @s[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s movement_speed base set .09
     execute as @s[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s attack_speed base set 3.5
+    execute as @s[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s scale base set 1
     execute as @s[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s armor base set -4
     execute as @s[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s armor_toughness base set -1
 
@@ -63,6 +64,7 @@ execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origi
     execute as @s[team=flux] if score @s flux matches -2 run attribute @s block_interaction_range base set 4.5
     execute as @s[team=flux] if score @s flux matches -2 run attribute @s movement_speed base set .04
     execute as @s[team=flux] if score @s flux matches -2 run attribute @s attack_speed base set 3.5
+    execute as @s[team=flux] if score @s flux matches -2 run attribute @s scale base set 1
     execute as @s[team=flux] if score @s flux matches -2 run attribute @s armor base set -4
     execute as @s[team=flux] if score @s flux matches -2 run attribute @s armor_toughness base set -1
 
@@ -75,6 +77,7 @@ execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origi
     execute as @s[team=flux] if score @s flux matches 0 run attribute @s block_interaction_range base set 4.5
     execute as @s[team=flux] if score @s flux matches 0 run attribute @s movement_speed base set .09
     execute as @s[team=flux] if score @s flux matches 0 run attribute @s attack_speed base set 3.5
+    execute as @s[team=flux] if score @s flux matches 0 run attribute @s scale base set 1
     execute as @s[team=flux] if score @s flux matches 0 run attribute @s armor base set -4
     execute as @s[team=flux] if score @s flux matches 0 run attribute @s armor_toughness base set -1
 
@@ -90,16 +93,20 @@ execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origi
 
     #creator
         #creator passive
-            execute as @s[team=flux] if score @s flux matches 2 run attribute @s minecraft:sneaking_speed base set .6
+            execute as @s[team=flux] if score @s flux matches 2 run attribute @s block_interaction_range base set 5
+            execute as @s[team=flux] if score @s flux matches 2 run attribute @s sneaking_speed base set .6
             #level 2
             execute as @s[team=flux] if score @s flux matches 12 run attribute @s block_interaction_range base set 5
-            execute as @s[team=flux] if score @s flux matches 12 run attribute @s minecraft:sneaking_speed base set .6
+            execute as @s[team=flux] if score @s flux matches 12 run attribute @s sneaking_speed base set .6
+            execute as @s[team=flux] if score @s flux matches 12 run attribute @s scale base set .65
 
         #creator active
-            execute as @s[team=flux] if score @s flux matches 1 run attribute @s minecraft:sneaking_speed base set 1
+            execute as @s[team=flux] if score @s flux matches 1 run attribute @s block_interaction_range base set 6.5
+            execute as @s[team=flux] if score @s flux matches 1 run attribute @s sneaking_speed base set 1
             #level 2
-            execute as @s[team=flux] if score @s flux matches 11 run attribute @s minecraft:sneaking_speed base set 1
-            execute as @s[team=flux] if score @s flux matches 11 run attribute @s block_interaction_range base set 6
+            execute as @s[team=flux] if score @s flux matches 11 run attribute @s sneaking_speed base set 1
+            execute as @s[team=flux] if score @s flux matches 11 run attribute @s block_interaction_range base set 6.5
+            execute as @s[team=flux] if score @s flux matches 11 run attribute @s scale base set .65
 
 
     #fukin armour
