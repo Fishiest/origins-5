@@ -40,6 +40,7 @@ scoreboard objectives add sec dummy
 scoreboard objectives add sec_timer dummy
 scoreboard objectives add disc_inserted dummy
 scoreboard objectives add ambient_timer dummy
+scoreboard objectives add dimension_traveled_on_current_disc dummy
 
 scoreboard objectives add originSelect trigger
 scoreboard objectives add justJoined minecraft.custom:minecraft.play_time
