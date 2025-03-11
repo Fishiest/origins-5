@@ -138,7 +138,7 @@ execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origi
                #apply creator music
                 execute if entity @s[scores={disc_inserted=0,ambient_timer=0,flux=12}] run function origin:flux/end_ambient_music
                execute if entity @s[scores={disc_inserted=0,ambient_timer=0,flux=12}] run playsound alt_music_disc:creatorstereo music @s ~ ~ ~ .7 1 1
-               scoreboard players set @s[scores={ambient_timer = ..0,flux=12}] ambient_timer 3520
+               scoreboard players set @s[scores={ambient_timer = ..0,flux=12}] ambient_timer 3480
 
     #end ambient effects
         execute unless data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run scoreboard players set @s flux 0
@@ -147,4 +147,5 @@ execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origi
         execute unless data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run function origin:flux/end_ambient_music
         execute if data entity @s[scores={disc_inserted=0}] Inventory[{Slot:17b}].components."minecraft:item_model" run function origin:flux/end_vanilla_music
         execute if entity @s[scores={disc_inserted=1}] run function origin:flux/end_vanilla_music
+        execute if entity @s[scores={disc_inserted=1}] run function origin:flux/end_ambient_music
 

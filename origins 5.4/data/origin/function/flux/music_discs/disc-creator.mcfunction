@@ -1,5 +1,5 @@
 advancement revoke @s only origin:flux/horn-creator
-scoreboard players set @s[scores={disc_inserted=0}] sec 57
+scoreboard players set @s[scores={disc_inserted=0}] sec 54
 scoreboard players set @s[scores={disc_inserted=0}] min 2
 scoreboard players set @s[scores={disc_inserted=0}] flux 11
 scoreboard players set @s[scores={disc_inserted=0}] disc_inserted 1
