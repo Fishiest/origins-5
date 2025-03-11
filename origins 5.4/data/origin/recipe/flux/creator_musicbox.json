@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "boat",
+  "group": "flux",
   "key": {
     "o": "music_disc_creator_music_box",
     "v":"copper_block",

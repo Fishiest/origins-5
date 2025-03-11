@@ -1,5 +1,6 @@
 {
     "type": "crafting_shaped",
+    "group":"disc",
     "key":{
         "v":"disc_fragment_5",
         "o":"ancient_debris"

@@ -98,7 +98,7 @@ execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origi
             #level 2
             execute as @s[team=flux] if score @s flux matches 12 run attribute @s block_interaction_range base set 5
             execute as @s[team=flux] if score @s flux matches 12 run attribute @s sneaking_speed base set .6
-            execute as @s[team=flux] if score @s flux matches 12 run attribute @s scale base set .65
+            execute as @s[team=flux] if score @s flux matches 12 run attribute @s scale base set .75
 
         #creator active
             execute as @s[team=flux] if score @s flux matches 1 run attribute @s block_interaction_range base set 6.5
