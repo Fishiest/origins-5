@@ -1,10 +1,10 @@
 {
     "criteria": {
-      "toot_horn_creator_box": {
+      "toot_horn_creator": {
         "conditions": {
           "item": {
             "items": "goat_horn",
-            "components":{"item_model":"music_disc_creator_music_box"}
+            "components":{"item_model":"music_disc_creator"}
             
           },"player":{"team": "flux"}
           
@@ -14,9 +14,9 @@
     },
     "requirements": [
       [
-        "toot_horn_creator_box"
+        "toot_horn_creator"
       ]
     ],
-    "rewards":{"function": "origin:flux/music_discs/creator_box"}
+    "rewards":{"function": "origin:flux/music_discs/disc-creator"}
     
   }

@@ -9,8 +9,8 @@
         title @s[scores={flux = 1}] actionbar [{"text":"Creator/Musicbox: ","color":"#d47a31"},{"score":{"name": "@s","objective":"min"}},{"text": ":"},{"score":{"name": "@s","objective": "sec"}}]
         title @s[scores={flux = 2}] actionbar [{"text":"Creator/musicbox - ","color":"#d47a31","italic": true},{"text":"Ambient"}]
         #normal
-     title @s[scores={flux = 11}] actionbar [{"text":"Creator: ","color":"#d47a31"},{"score":{"name": "@s","objective":"min"}},{"text": ":"},{"score":{"name": "@s","objective": "sec"}}]
-     title @s[scores={flux = 12}] actionbar [{"text":"Creator - ","color":"#d47a31","italic": true},{"text":"Ambient"}]
+     title @s[scores={flux = 11}] actionbar [{"text":"Creator: ","color":"#d47a31","bold": true},{"score":{"name": "@s","objective":"min"}},{"text": ":"},{"score":{"name": "@s","objective": "sec"}}]
+     title @s[scores={flux = 12}] actionbar [{"text":"Creator - ","color":"#d47a31","italic": true,"bold": true},{"text":"Ambient"}]
 #spacer
 
 
@@ -91,17 +91,13 @@ execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origi
     #creator
         #creator passive
             execute as @s[team=flux] if score @s flux matches 2 run attribute @s minecraft:sneaking_speed base set .6
-            execute as @s[team=flux] if score @s flux matches 2 run attribute @s movement_speed base set 0.125
             #level 2
             execute as @s[team=flux] if score @s flux matches 12 run attribute @s block_interaction_range base set 5
             execute as @s[team=flux] if score @s flux matches 12 run attribute @s minecraft:sneaking_speed base set .6
-            execute as @s[team=flux] if score @s flux matches 12 run attribute @s minecraft:movement_speed base set 0.125
 
         #creator active
-            execute as @s[team=flux] if score @s flux matches 1 run attribute @s movement_speed base set .15
             execute as @s[team=flux] if score @s flux matches 1 run attribute @s minecraft:sneaking_speed base set 1
             #level 2
-            execute as @s[team=flux] if score @s flux matches 11 run attribute @s movement_speed base set .15
             execute as @s[team=flux] if score @s flux matches 11 run attribute @s minecraft:sneaking_speed base set 1
             execute as @s[team=flux] if score @s flux matches 11 run attribute @s block_interaction_range base set 6
 
