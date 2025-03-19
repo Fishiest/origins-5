@@ -22,3 +22,5 @@ effect give @s[scores={disc_inserted=1,flux=31..40}] blindness 16
 
 #apply music starved stats
 scoreboard players set @s[scores={disc_inserted=1,flux=0..}] flux -2
+
+scoreboard players set @s[scores={flux=-2}] sec_timer 20

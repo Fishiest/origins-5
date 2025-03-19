@@ -129,6 +129,9 @@ scoreboard players operation @r[team=healer] sneaking2 %= !one numbers
 
 execute as @a[team=flux] run function origin:flux/fluxtick
 
+execute as @a[scores={left_game=1..}] run function origin:flux/music_discs/end_disc_effects
+execute as @a[scores={left_game=1..}] run scoreboard players set @s left_game 0
+
 scoreboard players enable @a[scores={justJoined=1}] originSelect
 tellraw @a[scores={justJoined=1}] ["Welcome! Please select your origin.\n\n",{"text":"[Flux]","color":"aqua","clickEvent":{"action":"run_command","value":"/trigger originSelect set 1"}},"\n",{"text":"[Assassin]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 2"},"color":"dark_red"},"\n",{"text":"[Armadillo]","color":"gold","clickEvent":{"action":"run_command","value":"/trigger originSelect set 3"}},"\n",{"text":"[Tank]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 4"},"color":"gray"},"\n",{"text":"[Human]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 5"},"color":"white"}]
 execute as @a[scores={originSelect=1}] run team join flux

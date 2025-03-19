@@ -1,8 +1,10 @@
 advancement revoke @s only origin:flux/horn-creator
-scoreboard players set @s[scores={disc_inserted=0}] sec 54
-scoreboard players set @s[scores={disc_inserted=0}] min 2
-scoreboard players set @s[scores={disc_inserted=0}] flux 11
-scoreboard players set @s[scores={disc_inserted=0}] disc_inserted 1
+scoreboard players set @s[scores={active_cooldown_timer=0}] sec 54
+scoreboard players set @s[scores={active_cooldown_timer=0}] sec_timer 20
+scoreboard players set @s[scores={active_cooldown_timer=0}] min 2
+scoreboard players set @s[scores={active_cooldown_timer=0}] flux 11
+scoreboard players set @s[scores={active_cooldown_timer=0}] disc_inserted 1
+
 
 
 
