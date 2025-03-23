@@ -56,6 +56,7 @@ execute as @a[scores={justJoined=1}] run scoreboard players set @s egotimer 0
 execute as @a[scores={justJoined=1}] run scoreboard players set @s damage 0
 
 #death detection
+#ivy this was armadillo death detection but go off girlboss :3
 execute as @a[team=armadillo] if score @s death matches 1.. run scoreboard players set @s ego 0
 execute as @a[team=flux,scores={death=1,disc_inserted=1}] run function origin:flux/music_discs/end_disc_effects
 execute as @a if score @s death matches 1.. run scoreboard players set @s death 0
@@ -133,9 +134,11 @@ scoreboard players enable @a[scores={justJoined=1}] originSelect
 tellraw @a[scores={justJoined=1}] ["Welcome! Please select your origin.\n\n",{"text":"[Flux]","color":"aqua","clickEvent":{"action":"run_command","value":"/trigger originSelect set 1"}},"\n",{"text":"[Assassin]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 2"},"color":"dark_red"},"\n",{"text":"[Armadillo]","color":"gold","clickEvent":{"action":"run_command","value":"/trigger originSelect set 3"}},"\n",{"text":"[Tank]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 4"},"color":"gray"},"\n",{"text":"[Human]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 5"},"color":"white"}]
 execute as @a[scores={originSelect=1}] run team join flux
 execute as @a[scores={originSelect=2}] run team join blind
+execute as @a[scores={originSelect=2}] run attribute @s max_health base set 16
+execute as @a[scores={originSelect=2}] run give @s goat_horn
 execute as @a[scores={originSelect=3}] run team join armadillo
 execute as @a[scores={originSelect=4}] run team join tank
-execute as @a[scores={originSelect=1..}] run tellraw @a ["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHave fun :3"]
+execute as @a[scores={originSelect=1..}] run tellraw @s ["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHave fun :3"]
 execute as @a[scores={originSelect=1..}] run scoreboard players set @s originSelect 0
 
 #admin reset the stats cus thats cool
