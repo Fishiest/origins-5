@@ -57,6 +57,7 @@ execute as @a[scores={justJoined=1}] run scoreboard players set @s damage 0
 
 #death detection
 #ivy this was armadillo death detection but go off girlboss :3
+#see what im hearing is it was death detection and i would need to do much more if i put it anywhere else
 execute as @a[team=armadillo] if score @s death matches 1.. run scoreboard players set @s ego 0
 execute as @a[team=flux,scores={death=1,disc_inserted=1}] run function origin:flux/music_discs/end_disc_effects
 execute as @a if score @s death matches 1.. run scoreboard players set @s death 0
