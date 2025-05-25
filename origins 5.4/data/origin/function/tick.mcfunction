@@ -55,15 +55,12 @@ execute as @a[scores={justJoined=1}] run scoreboard players set @s ego 5
 execute as @a[scores={justJoined=1}] run scoreboard players set @s egotimer 0
 execute as @a[scores={justJoined=1}] run scoreboard players set @s damage 0
 
-#death detection
-#ivy this was armadillo death detection but go off girlboss :3
+#death deteciton
 execute as @a[team=armadillo] if score @s death matches 1.. run scoreboard players set @s ego 0
-execute as @a[team=flux,scores={death=1,disc_inserted=1}] run function origin:flux/music_discs/end_disc_effects
 execute as @a if score @s death matches 1.. run scoreboard players set @s death 0
-
 #ego timer
-execute as @a[team=armadillo,scores={damage=0,ego=..9}] run scoreboard players add @s egotimer 1
-execute as @a[team=armadillo] if score @s[scores={ego=..9}] egotimer matches 400.. run scoreboard players add @s ego 1
+execute as @a[team=armadillo,scores={damage=0}] run scoreboard players add @s egotimer 1
+execute as @a[team=armadillo] if score @s egotimer matches 400.. run scoreboard players add @s ego 1
 execute as @a[team=armadillo] run scoreboard players operation @s egotimer %= !400 numbers
 
 #ego actionbar
@@ -88,8 +85,7 @@ execute as @a[team=armadillo] if score @s egotimer matches 320..339 run title @s
 execute as @a[team=armadillo] if score @s egotimer matches 340..359 run title @s actionbar ["",{"text":"Ego: [","color":"#ff3366"},{"color":"#c51c1c","bold":true,"score":{"objective":"ego","name":"@s"}},{"text":"] ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ □ □","color":"#ff3366"}]
 execute as @a[team=armadillo] if score @s egotimer matches 360..379 run title @s actionbar ["",{"text":"Ego: [","color":"#ff3366"},{"color":"#c51c1c","bold":true,"score":{"objective":"ego","name":"@s"}},{"text":"] ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ □","color":"#ff3366"}]
 execute as @a[team=armadillo] if score @s egotimer matches 380..399 run title @s actionbar ["",{"text":"Ego: [","color":"#ff3366"},{"color":"#c51c1c","bold":true,"score":{"objective":"ego","name":"@s"}},{"text":"] ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■","color":"#ff3366"}]
-#at full ego keeps ego bar full
-execute as @a[team=armadillo] if score @s ego matches 10 run title @s actionbar ["",{"text":"Ego: [","color":"#ff3366"},{"color":"#c51c1c","bold":true,"score":{"objective":"ego","name":"@s"}},{"text":"] ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■","color":"#ff3366"}]
+
 #ego movement speed
 execute as @a[team=armadillo] if score @s ego matches 0 run attribute @s movement_speed base set 0.05
 execute as @a[team=armadillo] if score @s ego matches 1 run attribute @s movement_speed base set 0.078
@@ -130,18 +126,13 @@ scoreboard players operation @r[team=healer] sneaking2 %= !one numbers
 
 execute as @a[team=flux] run function origin:flux/fluxtick
 
-execute as @a[scores={left_game=1..}] run function origin:flux/music_discs/end_disc_effects
-execute as @a[scores={left_game=1..}] run scoreboard players set @s left_game 0
-
 scoreboard players enable @a[scores={justJoined=1}] originSelect
 tellraw @a[scores={justJoined=1}] ["Welcome! Please select your origin.\n\n",{"text":"[Flux]","color":"aqua","clickEvent":{"action":"run_command","value":"/trigger originSelect set 1"}},"\n",{"text":"[Assassin]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 2"},"color":"dark_red"},"\n",{"text":"[Armadillo]","color":"gold","clickEvent":{"action":"run_command","value":"/trigger originSelect set 3"}},"\n",{"text":"[Tank]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 4"},"color":"gray"},"\n",{"text":"[Human]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 5"},"color":"white"}]
 execute as @a[scores={originSelect=1}] run team join flux
 execute as @a[scores={originSelect=2}] run team join blind
-execute as @a[scores={originSelect=2}] run attribute @s max_health base set 16
-execute as @a[scores={originSelect=2}] run give @s goat_horn
 execute as @a[scores={originSelect=3}] run team join armadillo
 execute as @a[scores={originSelect=4}] run team join tank
-execute as @a[scores={originSelect=1..}] run tellraw @s ["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHave fun :3"]
+execute as @a[scores={originSelect=1..}] run tellraw @a ["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHave fun :3"]
 execute as @a[scores={originSelect=1..}] run scoreboard players set @s originSelect 0
 
 #admin reset the stats cus thats cool
@@ -171,30 +162,8 @@ execute as @a[scores={adminFag=1..}] run scoreboard players set @s adminFag 0
 
 
 #dragon egg stuff
-scoreboard players enable @a degg
-execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] run scoreboard players enable @s DragonEgg
-execute as @a[nbt=!{Inventory:[{id:"minecraft:dragon_egg"}]}] run scoreboard players set @s DragonEgg 0
-execute as @a[scores={DragonEgg=1..}] run function origin:dragonegg
-execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 1 run effect give @s strength 1 1 true
-execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 2 run effect give @s speed 1 1 true
-execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 3 run effect give @s fire_resistance 1 0 true
-execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 4 run effect give @s haste 1 1 true
-execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] if score @s degg matches 5 run effect give @s jump_boost 1 1 true
-
-#pvp list
-tellraw @a[scores={pvplist=1..}] ["",{"text":"[PvP List]:","color":"gold"},"\n",{"selector":"@a[scores={pvp=1..}]"}]
-scoreboard players enable @a pvplist
-scoreboard players set @a[scores={pvplist=1..}] pvplist 0
-scoreboard players set @a[scores={justJoined=1}] pvp 1
-scoreboard players enable @a pvp
-scoreboard players operation @r pvp %= !two numbers
-scoreboard players set @a[nbt={Inventory:[{id:"minecraft:mace"}]}] pvp 1
-scoreboard players set @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] pvp 1
-
-scoreboard players enable @a vanillaMusicDisable
-execute as @a[scores={vanillaMusicDisable=1}] run function origin:flux/end_vanilla_music
-scoreboard players set @a[scores={vanillaMusicDisable=2..}] vanillaMusicDisable 0
-#say alkjsdf
+execute as @a[nbt={Inventory:[{id:"minecraft:dragon_egg"}]}] run say test
+say alkjsdf
 
 
 #dim lock
