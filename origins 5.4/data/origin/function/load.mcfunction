@@ -8,6 +8,7 @@ scoreboard objectives add sneaking2 minecraft.custom:minecraft.sneak_time
 scoreboard players set !one numbers 1
 scoreboard players set !two numbers 2
 scoreboard players set !ten numbers 10
+scoreboard players set !20 numbers 20
 scoreboard players set !400 numbers 400
 scoreboard objectives add hp health
 
@@ -23,6 +24,13 @@ team add tank
 #team modify tank color gray
 #team modify tank prefix {"text":"[Tank] ","color":"gray"}
 #team modify tank seeFriendlyInvisibles false
+scoreboard objectives add lspark trigger
+scoreboard objectives add lspark_timer dummy
+scoreboard objectives add lspark_cooldown dummy
+scoreboard objectives add rspark trigger
+scoreboard objectives add rspark_timer dummy
+scoreboard objectives add rspark_cooldown dummy
+scoreboard objectives add damageDealt minecraft.custom:minecraft.damage_dealt
 team add armadillo
 scoreboard objectives add ego dummy
 scoreboard objectives add egotimer dummy
@@ -59,7 +67,10 @@ team add flux
 #end flux
 scoreboard objectives add left_game minecraft.custom:leave_game
 
-
+#oh mein gott eine Katze
+team add catgirl
+scoreboard objectives add dash trigger
+scoreboard objectives add dashRay dummy
 
 
 scoreboard objectives add originSelect trigger
@@ -83,5 +94,13 @@ scoreboard objectives add pvplist trigger
 
 scoreboard objectives add vanillaMusicDisable trigger
 
+scoreboard objectives add degg trigger
+scoreboard objectives add DragonEgg trigger
+
+scoreboard objectives add pvp trigger
+scoreboard objectives add pvplist trigger
+
+scoreboard objectives add vanillaMusicDisable trigger
+
 #execute as @r at @s run function origin:test with entity @s SelectedItem
-say I LOVE FAGGOTS
+say I LOVE FAGGOTS n tranniesa
