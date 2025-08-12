@@ -21,15 +21,45 @@ execute as @a[team=blind] run scoreboard players set @s riding 0
 
 
 #tank
-execute as @a[team=tank] run attribute @s max_health base set 30
-effect give @a[team=tank] resistance infinite 0 true
-effect give @a[team=tank] regeneration infinite 0 true
-effect give @a[team=tank] slowness infinite 1 true
-effect give @a[team=tank] weakness infinite 0 true
-execute as @a[team=tank] if score @s hp matches 30.. run title @s actionbar {"text":"You take 40% damage!","color":"green"}
-execute as @a[team=tank] if score @s hp matches ..29 run title @s actionbar {"text":""}
-execute as @a[team=tank] if score @s hp matches 30.. run effect give @s resistance 1 2 true
+execute as @a[team=tank,scores={lspark_timer=0}] run attribute @s max_health base set 30
+execute as @a[team=tank,scores={lspark_timer=1200..}] run attribute @s max_health base set 30
+scoreboard players set @a[team=tank,scores={lspark_timer=1200..}] lspark_cooldown 1
+scoreboard players set @a[team=tank,scores={lspark_timer=1200..}] lspark_timer 0
+scoreboard players set @a[team=tank,scores={lspark_cooldown=2400..}] lspark_cooldown 0
+#execute as @a[team=tank] if score @s hp matches 30 run effect give @s resistance 1 2 true
 
+#tank spark shit
+scoreboard players enable @a[team=tank] lspark
+scoreboard players enable @a[team=tank] rspark
+execute as @a[team=tank,scores={lspark=1}] if score @s lspark_cooldown matches 0 if score @s lspark_timer matches 0 run function origin:tank/lspark/lsparkpass
+execute as @a[team=tank,scores={lspark=1}] if score @s lspark_cooldown matches 1.. run function origin:tank/lspark/lsparkfail
+execute as @a[team=tank,scores={lspark=1}] if score @s lspark_timer matches 1.. run function origin:tank/lspark/lsparkfail
+#title @a[team=tank] actionbar {"text":"lspark temp timer | rspark temp timer","color":"red"}
+effect clear @a[team=tank] slowness
+scoreboard players add @a[team=tank,scores={lspark_timer=1..}] lspark_timer 1
+scoreboard players add @a[team=tank,scores={lspark_cooldown=1..}] lspark_cooldown 1
+#execute as @a[team=tank,tag=admin] run title @s actionbar [{"text":"lspark timer: ","color":"red"},{"score":{"objective":"lspark_timer","name":"@s"}},{"text":" | lspark cooldown: ","color":"red"},{"score":{"objective":"lspark_cooldown","name":"@s"}}]
+scoreboard players set @a[scores={justJoined=1}] lspark_timer 0
+scoreboard players set @a[scores={justJoined=1}] lspark_cooldown 0
+scoreboard players set @a[scores={justJoined=1}] rspark_timer 0
+scoreboard players set @a[scores={justJoined=1}] rspark_cooldown 0
+execute as @a[team=tank,scores={rspark=1}] if score @s rspark_cooldown matches 0 if score @s rspark_timer matches 0 run function origin:tank/rspark/rsparkpass
+execute as @a[team=tank,scores={rspark=1}] if score @s rspark_cooldown matches 1.. run function origin:tank/rspark/rsparkfail
+execute as @a[team=tank,scores={rspark=1}] if score @s rspark_timer matches 1.. run function origin:tank/rspark/rsparkfail
+#execute as @a[team=tank,tag=admin] run title @s actionbar [{"text":"rspark timer: ","color":"red"},{"score":{"objective":"rspark_timer","name":"@s"}},{"text":" | rspark cooldown: ","color":"red"},{"score":{"objective":"rspark_cooldown","name":"@s"}}]
+execute as @a[team=tank] if score @s lspark_timer matches 0 if score @s rspark_timer matches 0 run title @s actionbar [{"color":"#5f5555","score":{"objective":"lspark_cooldown","name":"@s"}},{"color":"#5f5555","text":" ➀ | ➁ "},{"color":"#5f5555","score":{"objective":"rspark_cooldown","name":"@s"}}]
+execute as @a[team=tank] if score @s lspark_timer matches 1.. if score @s rspark_timer matches 1.. run title @s actionbar [{"color":"red","score":{"objective":"lspark_timer","name":"@s"}},{"color":"red","text":" ➀ | ➁ "},{"color":"red","score":{"objective":"rspark_timer","name":"@s"}}]
+execute as @a[team=tank] if score @s lspark_timer matches 1.. if score @s rspark_timer matches 0 run title @s actionbar [{"color":"red","score":{"objective":"lspark_timer","name":"@s"}},{"color":"red","text":" ➀ | "},{"text":"➁ ","color":"#5f5555"},{"color":"#5f5555","score":{"objective":"rspark_cooldown","name":"@s"}}]
+execute as @a[team=tank] if score @s lspark_timer matches 0 if score @s rspark_timer matches 1.. run title @s actionbar [{"color":"#5f5555","score":{"objective":"lspark_cooldown","name":"@s"}},{"color":"#5f5555","text":" ➀ "},{"text":"| ➁ ","color":"red"},{"color":"red","score":{"objective":"rspark_timer","name":"@s"}}]
+scoreboard players add @a[team=tank,scores={rspark_timer=1..}] rspark_timer 1
+scoreboard players add @a[team=tank,scores={rspark_cooldown=1..}] rspark_cooldown 1
+scoreboard players set @a[team=tank,scores={rspark_timer=300..}] rspark_cooldown 1
+scoreboard players set @a[team=tank,scores={rspark_timer=300..}] rspark_timer 0
+scoreboard players set @a[team=tank,scores={rspark_cooldown=2400..}] rspark_cooldown 0
+execute as @a[team=tank,scores={rspark_timer=1..}] if score @s damageDealt matches 25.. run effect give @s instant_health 1 0
+execute as @a[team=tank,scores={rspark_timer=1..}] if score @s damageDealt matches 25.. run say test
+execute as @a[team=tank,scores={rspark_timer=1..}] if score @s damageDealt matches 25.. run scoreboard players remove @s damageDealt 25
+scoreboard players set @a[team=tank,scores={rspark=0}] damageDealt 0
 
 #armadillo
 effect give @a[team=armadillo] instant_health infinite 1 true
@@ -57,7 +87,6 @@ execute as @a[scores={justJoined=1}] run scoreboard players set @s damage 0
 
 #death detection
 #ivy this was armadillo death detection but go off girlboss :3
-#see what im hearing is it was death detection and i would need to do much more if i put it anywhere else
 execute as @a[team=armadillo] if score @s death matches 1.. run scoreboard players set @s ego 0
 execute as @a[team=flux,scores={death=1,disc_inserted=1}] run function origin:flux/music_discs/end_disc_effects
 execute as @a if score @s death matches 1.. run scoreboard players set @s death 0
@@ -131,9 +160,6 @@ scoreboard players operation @r[team=healer] sneaking2 %= !one numbers
 
 execute as @a[team=flux] run function origin:flux/fluxtick
 
-execute as @a[scores={left_game=1..}] run function origin:flux/music_discs/end_disc_effects
-execute as @a[scores={left_game=1..}] run scoreboard players set @s left_game 0
-
 scoreboard players enable @a[scores={justJoined=1}] originSelect
 tellraw @a[scores={justJoined=1}] ["Welcome! Please select your origin.\n\n",{"text":"[Flux]","color":"aqua","clickEvent":{"action":"run_command","value":"/trigger originSelect set 1"}},"\n",{"text":"[Assassin]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 2"},"color":"dark_red"},"\n",{"text":"[Armadillo]","color":"gold","clickEvent":{"action":"run_command","value":"/trigger originSelect set 3"}},"\n",{"text":"[Tank]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 4"},"color":"gray"},"\n",{"text":"[Human]","clickEvent":{"action":"run_command","value":"/trigger originSelect set 5"},"color":"white"}]
 execute as @a[scores={originSelect=1}] run team join flux
@@ -144,6 +170,9 @@ execute as @a[scores={originSelect=3}] run team join armadillo
 execute as @a[scores={originSelect=4}] run team join tank
 execute as @a[scores={originSelect=1..}] run tellraw @s ["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHave fun :3"]
 execute as @a[scores={originSelect=1..}] run scoreboard players set @s originSelect 0
+
+#eine Katze!!!
+execute as @a[team=catgirl] at @s run function origin:catgirl with entity @s
 
 #admin reset the stats cus thats cool
 execute as @a[tag=admin] run scoreboard players enable @s adminFag
@@ -167,6 +196,9 @@ execute as @a[scores={adminFag=1..}] run attribute @s luck base reset
 execute as @a[scores={adminFag=1..}] run attribute @s max_absorption base reset
 execute as @a[scores={adminFag=1..}] run attribute @s max_health base reset
 execute as @a[scores={adminFag=1..}] run attribute @s movement_speed base reset
+execute as @a[scores={adminFag=1..}] run attribute @s scale base reset
+execute as @a[scores={adminFag=1..}] run attribute @s fall_damage_multiplier base reset
+execute as @a[scores={adminFag=1..}] run attribute @s safe_fall_distance base reset
 execute as @a[scores={adminFag=1..}] run effect clear @s
 execute as @a[scores={adminFag=1..}] run scoreboard players set @s adminFag 0
 

@@ -1,19 +1,16 @@
 #music disc title stuff
     #misc
-    title @s[scores={active_cooldown_timer=1..,flux=0}] actionbar [{"text":"active cooldown:","italic": false,"color":"#eb1515"},{"score":{"name":"@s","objective": "active_cooldown_timer"},"italic": false,"color":"#eb1515"}]
     title @s[scores={flux = -2}] actionbar [{"text":"Music Starved: ","color":"#1a1a1a","bold": true},{"score":{"name": "@s","objective":"min"}},{"text": ":"},{"score":{"name": "@s","objective": "sec"}}]
-    title @s[scores={flux = 0, active_cooldown_timer=0}] actionbar {"text":"No disc inserted "}
+    title @s[scores={flux = 0}] actionbar {"text":"No disc inserted "}
 
 
     #creator
         #musicbox
         title @s[scores={flux = 1}] actionbar [{"text":"Creator/Musicbox: ","color":"#d47a31"},{"score":{"name": "@s","objective":"min"}},{"text": ":"},{"score":{"name": "@s","objective": "sec"}}]
-        title @s[scores={flux = 2,active_cooldown_timer=0}] actionbar [{"text":"Creator/musicbox - ","color":"#d47a31","italic": true},{"text":"Ambient"}]
-        title @s[scores={flux = 2,active_cooldown_timer=1..}] actionbar [{"text":"Creator/musicbox - ","color":"#d47a31","italic": true},{"text":"Ambient"},{"text":" │ ","color": "dark_gray","italic": false},{"text":"active cooldown:","italic": false,"color":"#eb1515"},{"score":{"name":"@s","objective": "active_cooldown_timer"},"italic": false,"color":"#eb1515"}]
+        title @s[scores={flux = 2}] actionbar [{"text":"Creator/musicbox - ","color":"#d47a31","italic": true},{"text":"Ambient"}]
         #normal
      title @s[scores={flux = 11}] actionbar [{"text":"Creator: ","color":"#d47a31","bold": true},{"score":{"name": "@s","objective":"min"}},{"text": ":"},{"score":{"name": "@s","objective": "sec"}}]
-     title @s[scores={flux = 12,active_cooldown_timer=0}] actionbar [{"text":"Creator - ","color":"#d47a31","italic": true,"bold": true},{"text":"Ambient"}]
-     title @s[scores={flux = 12,active_cooldown_timer=1..}] actionbar [{"text":"Creator - ","color":"#d47a31","italic": true,"bold": true},{"text":"Ambient"},{"text":" │ ","color": "dark_gray","italic": false,"bold":false},{"text":"active cooldown:","italic": false,"color":"#eb1515","bold":false},{"score":{"name":"@s","objective": "active_cooldown_timer"},"italic": false,"color":"#eb1515","bold":false}]
+     title @s[scores={flux = 12}] actionbar [{"text":"Creator - ","color":"#d47a31","italic": true,"bold": true},{"text":"Ambient"}]
 #spacer
 
 
@@ -23,28 +20,21 @@
     execute unless score @s flux matches -2147483648..2147483647 run scoreboard players set @s flux 0
     execute unless score @s sec_timer matches -30.. run scoreboard players set @s sec_timer 0
     execute unless score @s ambient_timer matches -30.. run scoreboard players set @s ambient_timer 0
-    execute unless score @s active_cooldown_timer matches -30.. run scoreboard players set @s active_cooldown_timer 0
+
 #keep music off if dimension changed
 stopsound @s[scores={dimension_traveled_on_current_disc=1,disc_inserted=1}] record
-stopsound @s[scores={disc_inserted=0,active_cooldown_timer=1..}] record
 
 #timer stuff
-    scoreboard players remove @s[scores={sec_timer= 0..}] sec_timer 1
+    execute unless score @s flux matches 0 run scoreboard players remove @s[scores={sec_timer= 0..}] sec_timer 1
     execute as @s[scores={sec_timer = ..0}] run function origin:flux/second_tick
     scoreboard players set @s[scores={sec_timer = ..0}] sec_timer 20
-   
-
-
-
-
-
+    scoreboard players set @s[scores={flux = 0}] sec_timer 20
+    execute unless score @s sec_timer matches -30.. run scoreboard players set @s sec_timer 20
 #spacer
 
 #apply music starved
 execute as @s[scores={min=0,sec=-1,flux=1..,disc_inserted=1}] run function origin:flux/music_discs/music_starved
 
-#stop all sounds if your currently musicstarved
-stopsound @s[scores={flux=-2}]
 
 #unapply music starved and set stats to default
     execute as @s[team=flux,scores={min=0,sec=-1,flux=-2}] run attribute @s max_absorption base set -12
